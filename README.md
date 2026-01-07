@@ -13,6 +13,7 @@ cargo component add rust-analyzer
     3. `emmet-language-server`
     4. `html-lsp`
     5. `stylua`
+    7. `tinymist`
     6. `typescript-language-server`
 
 ## sway

@@ -26,6 +26,32 @@ return {
 				"emmet_language_server",
 				"clangd",
 			})
+
+			vim.lsp.config("tinymist", {
+				on_init = function(client)
+					client.offset_encoding = "utf-8"
+				end,
+				on_attach = function(client, bufnr)
+					vim.keymap.set("n", "<leader>ltp", function()
+						client:exec_cmd({
+							title = "pin",
+							command = "tinymist.pinMain",
+							arguments = { vim.api.nvim_buf_get_name(0) },
+						}, { bufnr = bufnr })
+					end, { desc = "[T]inymist [P]in", noremap = true })
+
+					vim.keymap.set("n", "<leader>ltu", function()
+						client:exec_cmd({
+							title = "unpin",
+							command = "tinymist.pinMain",
+							arguments = { vim.v.null },
+						}, { bufnr = bufnr })
+					end, { desc = "[T]inymist [U]npin", noremap = true })
+				end,
+				settings = {
+					["syntaxOnly"] = "enable", -- saves on RAM, but is Syntax only
+				},
+			})
 		end,
 	},
 	{
@@ -201,5 +227,11 @@ return {
 		config = function()
 			vim.keymap.set({ "n", "v" }, "<leader>xe", require("nvim-emmet").wrap_with_abbreviation)
 		end,
+	},
+	{
+		"chomosuke/typst-preview.nvim",
+		lazy = false, -- or ft = 'typst'
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
 	},
 }
