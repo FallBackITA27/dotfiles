@@ -14,3 +14,9 @@ cargo component add rust-analyzer
     4. `html-lsp`
     5. `stylua`
     6. `typescript-language-server`
+
+## sway
+For screenshots to work, install `flameshot`
+```bash
+sudo pacman -S flameshot
+```
