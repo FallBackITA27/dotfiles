@@ -1,0 +1,9 @@
+window#waybar {
+	background-color: rgba(0, 0, 0, 0.5);
+	font-family: "FiraCode Nerd Font";
+}
+
+window#waybar label.module {
+	padding: 0 13px;
+	border: .25px solid #fff;
+}
